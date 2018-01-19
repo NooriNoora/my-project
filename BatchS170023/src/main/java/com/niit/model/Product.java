@@ -1,71 +1,97 @@
 package com.niit.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
+import javax.persistence.Transient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Component
-@Table(name="Product")
+@Table(name = "Product")
 public class Product {
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productId;
-	@NotEmpty(message="ProductName shouldnot be empty")
+	// @NotNull
+	// @Length(min = 4, message="product name should not be empty")
 	private String productname;
-	@NotNull
-	@Length(message="Category shouldnot be empty")
-	private String category;
-	@NotNull
-	@Length(message="Description shouldnot be empty")
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name="category_ID", nullable=false)
+	private Category category;
+
 	private String description;
-	@NotNull
-	@Length(message="Cost shouldnot be empty")
-	private String cost;
-	@NotNull
-	@Length(message="Discount shouldnot be empty")
-	private String discount;
+
+	private int cost;
+
+	private int discount;
+
+	@Transient
+	private MultipartFile file;
+
 	public int getProductId() {
 		return productId;
 	}
+
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
 	public String getProductname() {
 		return productname;
 	}
+
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	public String getCategory() {
+
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+
+	public void setCategory(Category category) {
 		this.category = category;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCost() {
+	
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(String cost) {
+
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
-	public String getDiscount() {
+
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(String discount) {
+
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
-				}
+
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+}

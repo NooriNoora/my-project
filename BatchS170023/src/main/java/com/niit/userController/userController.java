@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.niit.dao.ProductDao;
 import com.niit.dao.UserDao;
 import com.niit.model.User;
 
@@ -19,9 +20,10 @@ import com.niit.model.User;
 public class userController {
 	@Autowired
 	private UserDao userDao;
-
-	@RequestMapping("/login")
-	public String login() {
+	
+	@RequestMapping(value={"/login"}, method={RequestMethod.GET,RequestMethod.POST})
+	public String login(Model model) {
+		model.addAttribute("User", new User());
 		return "login";
 	}
 
@@ -61,8 +63,10 @@ public class userController {
 			return "signin";
 
 		}
+		user.setRole("ROLE_USER");
+		user.setEnabled(true);
 		userDao.addUser(user);
 
-		return "redirect:/up";
+		return "redirect:login";
 	}
 }

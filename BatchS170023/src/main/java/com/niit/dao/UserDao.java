@@ -15,6 +15,7 @@ import com.niit.model.User;
 		public void addUser(User user);
 		public void upUser(User user);
 		public User getUserById(int id);
+		public User getUserByUsername(String username);
 		public List getAlluser();
 		
 

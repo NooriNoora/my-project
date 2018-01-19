@@ -17,7 +17,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	@NonNull
-	@Length(min = 8, message = "Username shouldnot be empty")
+	@Length(min = 4, message = "Username shouldnot be empty")
 	private String username;
 	private String email;
 	private String password;

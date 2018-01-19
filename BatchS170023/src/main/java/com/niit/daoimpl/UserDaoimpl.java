@@ -38,6 +38,19 @@ public  class UserDaoimpl implements UserDao{
 		return a1;
 
 	}
+	public User getUserByUsername(String username) {
+		Session session = sessionFactory.openSession();
+		Transaction transaction = (Transaction) session.beginTransaction();
+
+		User a1=new User();
+		a1=session.get(User.class, username);
+		transaction.commit();
+		session.close();
+		
+		return a1;
+
+	}
+
 	public void addUser(User user) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();

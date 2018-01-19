@@ -54,7 +54,7 @@
 							<spring-form:input path="username" class="form-control input-lg"
 								id="username" type="text"
 								placeholder="username can contain any letters or numbers, without spaces" />
-							<spring-form:errors path="username" id="message" />
+							<spring-form:errors path="username" id="message"/>
 							<span></span>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 					<div class="control-group">
 						<!-- Button -->
 						<div class="controls">
-							<button class="btn btn-success" onclick="Validate()">Register</button>
+							<button class="btn btn-success" type="submit" onclick="Validate()">Register</button>
 							
 							</div>
 					</div>
