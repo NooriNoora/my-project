@@ -38,12 +38,12 @@ public  class UserDaoimpl implements UserDao{
 		return a1;
 
 	}
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String email) {
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 
 		User a1=new User();
-		a1=session.get(User.class, username);
+		a1=session.createQuery("FROM User WHERE email = '"+email+"'",User.class).getSingleResult();
 		transaction.commit();
 		session.close();
 		

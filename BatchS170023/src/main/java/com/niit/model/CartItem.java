@@ -51,4 +51,10 @@ public class CartItem {
 		this.subTotal = subTotal;
 	}
 
+	@Override
+	public String toString() {
+		return "CartItem [id=" + id + ", product=" + product + ", quantity=" + quantity + ", subTotal=" + subTotal
+				+ "]";
+	}
+
 }

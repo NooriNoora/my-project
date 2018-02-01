@@ -17,12 +17,12 @@ public class Cart {
 	@GeneratedValue
 	private int id;
 
-	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<CartItem> cartItems;
 
 	private int grandTotal;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	private User user;
 
 	public int getId() {
@@ -55,6 +55,11 @@ public class Cart {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", cartItems=" + cartItems + ", grandTotal=" + grandTotal + ", user=" + user + "]";
 	}
 
 }

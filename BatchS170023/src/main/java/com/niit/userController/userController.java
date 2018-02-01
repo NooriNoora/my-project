@@ -26,12 +26,23 @@ public class userController {
 		model.addAttribute("User", new User());
 		return "login";
 	}
+	
+	@RequestMapping(value={"/logout"}, method={RequestMethod.GET})
+	public String logout(Model model) {
+		//model.addAttribute("User", new User());
+		return "index";
+	}
+
 
 	@RequestMapping("/signin")
 	public String signin(@ModelAttribute("User") User user, Model model) {
 		model.addAttribute("User", new User());
 		model.addAttribute("Users", userDao.getAlluser());
 		return "signin";
+	}
+	@RequestMapping(value={"/cart"},method={RequestMethod.GET})
+	public String cart(Model model){
+		return "cart";
 	}
 
 	@RequestMapping("/User")

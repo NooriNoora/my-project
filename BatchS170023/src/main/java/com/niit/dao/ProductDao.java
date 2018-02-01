@@ -5,7 +5,7 @@ public interface ProductDao {
     
     public Product addProduct(Product product);
     public void Products(Product product);
-    public Product getProductById(int id); 
+    public Product getProductById(int productId); 
     public List<Product> getAllProduct();
     public void delete(int id);
     

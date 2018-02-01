@@ -146,7 +146,7 @@
 					</security:authorize>
 					<security:authorize access="hasRole('ROLE_USER')">
 						<td><a
-							href="<c:url value='/addtocart/${product.productId}'/>">
+							href="<c:url value='/user/addtocart?id=${product.productId}'/>">
 								<button type="submit" class="btn btn-info">add to cart</button>
 						</a></td>
 						</security:authorize>

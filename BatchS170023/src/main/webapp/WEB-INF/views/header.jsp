@@ -21,7 +21,7 @@
 			</div>
 			<ul class="nav navbar-nav">
 				
-					<li><a href="productform"><span
+					<li><a href="${pageContext.request.contextPath}/productform"><span
 							class="glyphicon glyphicon-product"></span> product</a></li>
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 					<li><a href="User"><span class="glyphicon glyphicon-user"></span>
@@ -31,7 +31,7 @@
 							class="glyphicon glyphicon-category"></span> Category</a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('ROLE_USER')">
-					<li><a href="cart"><span class="glyphicon glyphicon-cart"></span>
+					<li><a href="${pageContext.request.contextPath}/user/cart"><span class="glyphicon glyphicon-cart"></span>
 							Cart</a></li></security:authorize>
 					
 
@@ -61,7 +61,7 @@
 							out.print(user);
 					%>
 					</a></li>
-					<li><a href="logout" style="text-align: center; color: white;"><span
+					<li><a href="${pageContext.request.contextPath}/logout" style="text-align: center; color: white;"><span
 							class="glyphicon glyphicon-log-in"></span>logout</a></li>
 				</security:authorize>
 			</ul>

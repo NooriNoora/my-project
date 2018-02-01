@@ -9,9 +9,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cart</title>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<%@include file="header.jsp"%>
+	
 
 	<div class = "container">
 		<table class="table table-hover">
@@ -26,15 +37,15 @@
 			</thead>
 
 			<tbody>
-				<c:forEach items="${cart.cartItems}" var="cart">
+				<c:forEach items="${cart.cartItems}" var="crt">
 					<tr>
-						<td><img alt="${product.productName}"
-							src="${pageContext.request.contextPath}/resources/image/${cart.product.productName}.jpg"
+						<td><img alt="${crt.product.productname}"
+							src="${pageContext.request.contextPath}/resources/images/${crt.product.productname}.jpg"
 							width="260px" height="300px" class="img-thumbnail"></td>
-						<td>${cart.product.productName}</td>
-						<td>${cart.subTotal}</td>
-						<td>${cart.quantity}</td>
-						<td><a href="${pageContext.request.contextPath}/user/delete/cartItem/${cart.id}" class="btn btn-danger">Remove</a></td>
+						<td>${crt.product.productname}</td>
+						<td>${crt.subTotal}</td>
+						<td>${crt.quantity}</td>
+						<td><a href="<c:url value='${pageContext.request.contextPath}/user/delete/cartItem/${crt.id}'/>" class="btn btn-danger">No Need</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

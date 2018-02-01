@@ -2,6 +2,7 @@ package com.niit.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,10 +22,10 @@ public class CartDaoimpl implements CartDao {
 
 	@Override
 	public void addCartItem(Cart cart) {
-
-		sessionFactory.getCurrentSession().saveOrUpdate(cart);
-
-	}
+		Session session = sessionFactory.openSession();
+		session.saveOrUpdate(cart);
+		session.close();
+	    }
 
 	@Override
 	public void removeCartItem(Cart cart, CartItem cartItem) {
@@ -47,8 +48,9 @@ public class CartDaoimpl implements CartDao {
 
 	@Override
 	public void deleteCart(Cart cart) {
-		
-		sessionFactory.getCurrentSession().delete(cart);
+		Session session = sessionFactory.openSession();
+		session.delete(cart);
+		session.close();
 
 	}
 
@@ -56,7 +58,11 @@ public class CartDaoimpl implements CartDao {
 	public Cart getCartByUser(User user) {
 		
 		try{
-			return sessionFactory.getCurrentSession().createQuery("FROM Cart WHERE USER_ID = '"+user.getId()+"'", Cart.class).getSingleResult();
+			Session session = sessionFactory.openSession();
+			Cart a2=new Cart();
+			a2=session.createQuery("FROM Cart WHERE USER_ID = '"+user.getId()+"'", Cart.class).getSingleResult();
+			session.close();
+			return a2;
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 			return null;
@@ -65,8 +71,11 @@ public class CartDaoimpl implements CartDao {
 
 	@Override
 	public CartItem getCartItemById(int id) {
-		
-		return sessionFactory.getCurrentSession().get(CartItem.class, id);
+		Session session = sessionFactory.openSession();
+		CartItem a3=new CartItem();
+		a3=session.get(CartItem.class, id);
+		session.close();
+		return a3;
 	}
 
 }

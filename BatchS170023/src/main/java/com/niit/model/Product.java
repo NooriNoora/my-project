@@ -25,7 +25,7 @@ public class Product {
 	private String productname;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-	@JoinColumn(name="category_ID", nullable=false)
+	@JoinColumn(name = "category_ID", nullable = false)
 	private Category category;
 
 	private String description;
@@ -68,7 +68,7 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public int getCost() {
 		return cost;
 	}
@@ -85,13 +85,18 @@ public class Product {
 		this.discount = discount;
 	}
 
-
 	public MultipartFile getFile() {
 		return file;
 	}
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productname=" + productname + ", category=" + category
+				+ ", description=" + description + ", cost=" + cost + ", discount=" + discount + ", file=" + file + "]";
 	}
 
 }

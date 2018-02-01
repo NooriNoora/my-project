@@ -37,11 +37,11 @@ public class ProductDaoimpl implements ProductDao {
 
 	}
 
-	public Product getProductById(int id) {
+	public Product getProductById(int productId) {
 		Session session = sesionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		Product al = new Product();
-		al = session.get(Product.class, id);
+		al = session.get(Product.class, productId);
 		transaction.commit();
 		session.close();
 		return al;

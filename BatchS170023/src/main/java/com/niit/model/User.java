@@ -1,10 +1,12 @@
 package com.niit.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
@@ -24,6 +26,17 @@ public class User {
 	private String confirmpassword;
 	private boolean enabled;
 	private String role;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Cart cart;
+
+	
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getId() {
 		return id;
@@ -80,4 +93,13 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", confirmpassword=" + confirmpassword + ", enabled=" + enabled + ", role=" + role + ", cart=" + cart
+				+ "]";
+	}
+	
+	
 }
